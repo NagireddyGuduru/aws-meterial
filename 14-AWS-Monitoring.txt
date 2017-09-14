@@ -19,6 +19,7 @@ EC2
 
 ELB Monitoring:
 ---------------
+
 CloudTrail:
 
 -- Loggin service
@@ -26,3 +27,23 @@ CloudTrail:
 -- this service logs api calls maid from a console.
 -- there is command line interface.
 -- SDKs
+
+
+CloudWatch
+------------------
+
+Which monitors services like ec2 instances ,elb,RDS,EBStore,EBstalk
+
+To specific instance for cpu utilization
+To monitor auto scaling group
+CloudWatch can integrate with auto scaling
+
+CloudWatch Rules
+----------------------
+Ec2 instance monitoring
+ELB monitoring
+BillingAlaram
+Schedule the Alarm.
+Schedule the Alarm to stop ec2 instances.
+I want to run ec2 instance only on business hours.
+

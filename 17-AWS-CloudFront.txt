@@ -1,0 +1,26 @@
+
+CloudFront
+
+-- it is caching our content
+-- eg: client request goes to nearest edge if the content not available connect to origin and it will
+   Cache the content.
+-- for better performance.
+-- origin nothing but what you hosted the server.
+-- content be like websites,html,images,video content.
+-- Content Delivery from edge location . If content not available get from origin.
+
+
+Origin :
+-- all the files that CDN will distribute.
+-- can be Load balancer
+-- S3
+-- Route 53
+
+Services-->Create Distribution
+
+
+Restrict Bucket Access
+
+TTL - Time To Leave -- Refresh the cache
+
+Edge location for CDN(Continuous Delivery Network)
