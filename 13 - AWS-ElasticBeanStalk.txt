@@ -1,0 +1,18 @@
+-- Automatically handle deployment,ec2 instance,Auto scaling.
+-- free
+
+Rolling - where downtime redirect to another ec2 instance
+
+Ignore Health check false: it will ask healthcheck. Should do health check
+
+Can work without VPC and within VPC
+
+Environment URL: to access environment
+
+Application health check : /index.jsp
+
+Heal Reporting Basic
+
+Connection draining: instance not healthy give some time before remove ec2 instance.
+
+Which going to create load balancers for that we need IAM roles
