@@ -1,0 +1,121 @@
+Rout53
+------
+
+Routing Policys:
+
+
+simple
+wightage
+latancy:
+
+latancy for region 1 150 ms and region 2 100ms 
+this policys routs to region 2
+
+
+failover:
+this policy ment for disaster recovery.
+
+Geolocation:
+
+based on cliens geographical location the traffic routed a specific region.
+
+
+S3(simple storage service):
+
+-- object based storage
+-- Object can be file,video,pdf,...etc.
+-- one object size can be 5TB. If more than split object and store.
+-- supports server side encryption of data
+-- when data transfer in network should encrypt and when store data encryption
+-- Supports REST & SOAP APIs
+-- s3 is highly scalable.
+-- we can store unlimited data.no need to mention the capacity how much GB required
+-- No need to specify the size.
+
+S3 use cases:
+
+-- Backups & Recovery
+-- eg: database backups,ebs backups,log backups.
+-- Big data analytics.
+-- Data archiving.
+-- the following objects can be stored on S3 taf files,zip files,pdf files,word  document,xsl,audio,videos,images..etc.
+
+-- eg: facebooks use object storage to store the videos
+-- youtube videos 
+-- amzon shopping 
+
+BUCKET:
+-- to store the data in s3 we need to create bucket.
+-- Its a container for objects stored in amazon s3.
+
+Object:
+-- objects are the fundamental entities stored in amazon s3
+
+Keys:
+Key is the unique identifier for an object within a bucket.Every object in a bucket has exactly one key.
+
+Regions:
+You can choose the geographical region where amazon s3 will store the buckets you create.
+You might choose a region to optimize 
+
+S3 Storage Classes
+ Standard
+     99.99% availability
+-- 99.99999999999 Durability - the percent of loosing data very less.
+
+Standard - Infrequently Accessed
+Same as Standard but storage cost is less.
+
+Reduced Redundancy
+ Durability low.
+
+S3 demo:
+
+Creating S3 bucket
+
+Create bucket-
+  Bucket name - Javahome-vides
+  Regions- choost optimized cost
+
+  Copy setting from an existing bucket - copy from existing bucket
+  
+
+
+
+Click Next
+   Set Propeties-default
+
+Next
+Set Permissions- default
+
+Uploading Object into S3
+Upload a file
+Manage PUblic permission
+Grant read access to other 
+
+Encryption:
+
+Select Amazon s3 
+
+Deleting object:
+Goto more option- delete.
+
+
+In Free trail upto 5GM free
+2000 objects can store
+20000 get request - getting requests
+
+
+Note:
+-- EBS- data broken into blocks  - block storage
+-- EBS- not support REST and SOAP APIs
+-- Instance storage - temporary storage.
+
+
+
+
+
+
+
+
+
