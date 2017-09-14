@@ -1,0 +1,139 @@
+
+What is infrastructure as code (IAC)?
+
+Provision & manage the servers using description language like
+-- Aws cloudformation -- only for aws
+-
+
+
+
+Anything can do manually can be automated using terraform
+
+Download and Install Terraform
+
+We need to set aws  permissions to the terraform to access account into our account.
+--- this is separate account dedicated for  terraform.
+
+Ways to Create 
+-- create user in IAM with programmatic access and configure secret key and access where we are in terraform.
+-- create the user with administrator access.
+
+Configuring Access key and Secret Key for Terraform
+We have multiple ways to do this
+Use AWS CLI
+                Cmd : Aws configure
+                Provide the access key and secret key
+       2) Directly Provide secrete key and access key in terraform itself.
+       3) We need to export credentials and region i.e Environment variables.
+                
+
+
+
+Terraform repo
+
+https://github.com/javahometech/terraform-examples
+
+Task:
+Create 2 security groups
+Create load balancer
+
+
+Steps 1: Download Terraform
+
+https://www.terraform.io/downloads.html
+
+Select windows 64-bit
+
+Step 2: Set the path
+
+E:\DEVOPS\DEVOPS_SOFTWARES\terraform
+
+Step 3: Create the User in AWS
+ 
+Give the programmatic access
+Managed Policy: AdministratorAccess 
+
+Save keys:
+Access Key ID:
+AKIAJRDLHMPGJWQUGKRQ
+Secret key:
+0PQ7FN36/5kcmuxh8Q+lPQTRd6M0oJdzYkXtuh4U
+
+
+Step 4:
+file formate
+.tf-main file
+.tfvars-key files
+
+plan
+Apply
+
+Step 5: Lanuch the ec2 instance using terraform
+
+
+Required 
+Machine img id: ami-6df1e514
+Access Key ID:
+AKIAJRDLHMPGJWQUGKRQ
+Secret key:
+0PQ7FN36/5kcmuxh8Q+lPQTRd6M0oJdzYkXtuh4U
+Region:Oregon
+
+
+Commands:
+---------------
+terraform plan
+terraform apply
+terraform show
+terraform destroy
+
+Terraform variables
+
+-- It is not a good practice always hardcode values directly inside terraform resources it is better
+    to user variables.
+
+
+Variable “cloudops_vpc_cidr” {
+    default = 172.10.1.0/16
+}
+
+Examples:
+
+Tasks:
+
+Create a VPC
+
+Create a Internet gateway and attach to VPC.
+
+Create a subnet in VPC
+
+Create a route table and route to internet g/w. Attach this route table to public subnet.
+
+
+
+git remote add origin https://github.com/NagireddyGuduru/terraform.git
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
