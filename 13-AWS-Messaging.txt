@@ -1,0 +1,27 @@
+SES:(Simple Email Service)
+We can send and recieve emails.
+
+usecase:
+---------
+-- E-mail marketing
+-- Bulk email marketing.
+-- Transaction email notification to customer.
+
+SQS :(SimpleQueueService)
+-------------------------
+-- is reliable,scalable,fully-m
+   reliable- high available data
+   fully-managed message Queuing service.
+
+app 1 app2  1 restful
+-- restful is synchronoss comm
+-- when sending request server should response back.
+Queues for Asynchronoss commiunication.
+-- target m/c not required to be up.
+
+Note:
+SMS notification not available in Mumbai.
+
+
+
+

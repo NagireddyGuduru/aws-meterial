@@ -1,0 +1,78 @@
+NACL(Network Access Control List)
+Security Groups(SG)
+
+NACL:
+--------
+-- one kind of virtual firewall.
+-- NACL for subnet level.
+-- NACL acts like a virtual firewall for your subnet to control inbound & outbound traffic.
+-- In one subnet you can have n no.of EC2 instances. 
+-- can not have 2 NACL for a subnet.
+Rules of Default NACL: 
+------------------------------
+-- it accepts all inbound and it allows all outbounds.on top of that we can add retrictions on i/b and o/b traffics.
+
+NACL support:
+-- have separate rule for inbound.i.e we can control i/b, by adding rules
+   i can say allow this, 
+   i can say deny this.
+   i can block ip address 
+-- have separate rule for outbound.i.e we can control o/b
+
+-- NACL is statless.
+-- Incase of SG is statfull i.e there is i/b rule that rule remeber what    is going out.
+-- it will remeber what is going out and what is coming in.
+
+
+-- Incase of subnet,    we can control i/b but there is no control on    o/b.
+-- we can control what is coming in.
+-- but we cannot control what is going out.
+-- we cannot block ip address.
+-- subnet can have only one NACL at a time.
+-- Subnet associate with only one NACL.
+-- Incase of Security Groups, Ec2 can have more than one SG's @ a time.
+
+Rules:
+Rule 1 Type   Protocal  Port storage source Allow/deny
+1                                                                     Deny
+2                                                                     ALLOW
+
+How the rules are evaluated:
+-- it starts from the lowest number.
+  eg: 1 rule says Deny
+        2 rule says ALLOW
+-- whenever request comes in it will evaluate lowest number rule so here 1 is lowest rule then it will deny.
+-- And it will not evaluate next rule. eventhogh there is rule to allow.
+
+-- The evaluation of rules happen from smallest number to highest number.
+-- we can control inbound and outbound as well.
+-- source can be ip,subnet.
+
+The best partice to give a number to rule
+100,200,300.....etc. in hundreds the reason is we will a scope to put rule b/w 100 and 200.
+1 and 2 to put rule its not possible.
+
+
+SG:(Security Groups)
+----------------------------
+-- one kind of firewall
+-- SG for EC2 instance level .
+-- Every EC2 instance must be associate with security group.
+
+-- Security Groups acts lika a virtual firewall for you EC2 instance to control inbound and outbound traffic.
+
+In Ec2 
+---------
+3 layers of securities.
+1)  id password of your ec2 inst
+2)  sg
+3)  NACL
+
+
+all public ec2 instance will get internet.
+but what about private ec2 instance to the get internet for some reasons like security updates, every day patching...
+
+
+
+
+

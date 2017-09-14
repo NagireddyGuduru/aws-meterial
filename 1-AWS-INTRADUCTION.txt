@@ -1,0 +1,112 @@
+what is Cloud Computing?
+Be consume what you want
+
+what is IT infrastructure?
+eg: start training institue
+-- servers(UNIX/CPU/RAM/HDD)
+-- DataBase Servers
+-- Storage (youtube need a storage. db will not give performance)
+-- Load increases add more 
+-- Load balancers
+-- Facility i.e we need a place or area or pyshical area.
+-- power supply
+-- Cooling
+-- Networking
+-- Employees i.e storage engg. to maintain the infrastructure.
+-- DNS (Domain Name service)
+-- security
+
+How to setup infrastructure?
+ -- Need to buy all of above.
+ -- Need to hire admin people to maintain.
+ -- should focus on values of the customer
+ -- put lots of upfront inverstment. i.expensive.
+
+Cloud:
+Instead of maintaing youself get from cloud.
+
+Define Cloud Computing:
+-----------------------
+Consuming IT resources on demand over internet. "pay as you go".
+this is onpremise not possible.
+
+History of Cloud Computing:
+---------------------------
+-- born in 2002
+-- cloud computing born in 2002  born @ amozon.
+-- 2006 amazon announced S3(Simple Storage Service)
+
+eg: store the images of mobile in portal
+EC2 (Elastic Compute Cloud) like servers
+In 2008 google came into the market by releasing google app engen
+In 2009 microsoft released Azure
+Oracle Cloud
+
+-- Started with saling books
+
+
+Why Cloud Computing? why companys are moving into cloud?
+
+-- No upfront Investment.
+-- Cloud computing abstracts powering,cooling,n/w, security and all maintaining IT resources.
+-- Provides agility i.e speed.
+-- We can get things within minutes.
+-- Cloud provide a flexibility i.e at runtime on demand we can expand and shrink servers.
+-- Cloud computing enables us to define infrastructure as a code.
+-- Automation
+-- its like Rent a car.
+
+Start understanding AWS
+-------------------------
+ -- aws providing 3 type of services
+    1)IaaS (Infrastructure as a service)
+       we are getting IT infrastructurte via internet . some one has to monitor,        update the services. it is on our hand.
+    2)PaaS (Platform as a service)
+      eg: db server , oracle,mysql,tomcat server  these are maintained by theire       controller
+      ELB
+    3)SaaS (Software as a service)
+  eg: web application. we maintain
+
+-- 18% cost reduces.
+-- servers in US is very cheap
+-- buying Infrastructure in india expansive.
+
+AWS Global Infrastructure
+-------------------------
+-- To avoid the latancy maintain Infrastructure.
+-- Aws Infrastructure is present across the globe.
+-- Regions i.e Geographical area. 10 -12 regions
+-- Availability Zone : represents  a physical a data center.AZ
+    In every region aws maintains two are more data centers/AZ
+
+How to Get into Cloud?
+----------------------
+Creating Aws account: 1yr free service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

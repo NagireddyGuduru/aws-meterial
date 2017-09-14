@@ -1,0 +1,86 @@
+Instance Types:
+t2.micro here 
+
+t - bustable performance
+    works based on cpu credits  if cpu is idle it gains cpu credit points.
+    if our ec2 instance wants perform our baseline its spents cpu credit points and gains above baseline performance.
+
+2 represents second generation
+micro- size of instance.
+
+Note: aws suggest to go with latest generations.
+
+
+
+General Purpose:
+t- family recomanded consisten performance eg:qa,uat,staging area- use general purpose
+we want server to be active only in business hrs and remains inactive will get credit points.
+
+m4- provide baseline consistant performance.
+
+eg:dev,testing server..,jenkins
+General Purpose recamanded for dev,testing environments , they also recomanded for small,media databases.
+
+compute optimzation:
+This family is optimized for compute intensive workloads which provides low case vCPU.
+Recomanded for high traffic frontended webservers.
+Ditributed Analatics batch processing(runs backend some actions)
+
+when we need more compute power
+eg:
+online videos games
+flipcart
+
+GPU Instances:
+Grphics Processing Unit
+-- better Graphics performance and n/w performance.
+
+memory optimized:
+Is a lowcost for RAM recomanded for database applications,distbuted cache.
+memcacheD
+redis cachie
+zemfile
+ehcache.
+
+Storage optimizations:(HDD)
+base on I/O operations
+
+Ec2 instance resize:
+Note: To resize ec2-instance instance should not be running state.
+
+Storage Types:
+only for Ec2 instances.
+Instance Store
+EBS- Elastic block store
+
+Instance Storage:
+Its a temporary storage associated with Ec2 instance.
+very cheap
+put cache on webserver
+ephemeral storage
+data on instance store is lost if you stop ec2.
+AMIS-->Root device type --> Instance store.
+
+EBS:
+provides persistance storage
+we can dettache from one ec2 and attach to another ec2
+EBS is AZ specific.
+you can takes the backups ie.create the snapshot.
+EBS is HA internally they maintain a replica i.e duplicate copy.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

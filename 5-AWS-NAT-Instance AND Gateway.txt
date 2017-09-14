@@ -1,0 +1,67 @@
+Q:Where we use public subnet?
+Q:How you  connecting to VPC?
+VPN
+
+very often we should update the m/c
+ -- security update
+ -- patching
+
+-- We have a servers in private subnet and we need i/n access for security    updates,patches or enchancements
+   This can be configuring by
+   NAT Instance
+   NAT Gateway
+
+Setting up NAT instance:
+
+1) Create NAT instance in public subnet with public ip
+2) Modifying the routing table of private subnet by adding a route NAT instance.
+3) NAT instance nothing but ec2instance only.
+4) Choose Community AMIs, search for NAT and select
+5) while using NAT we should disable source destination check.
+   goto-->Action--> Networking -->Change source/Dest.Check
+-- NAT is kind of mediator.
+-- NAT is not a source of trafic and it takes the trafic and passing to private    subnet.
+-- NAT itself  not a source of trafic and a destination it in b/w private and public network.
+
+NAT gateway:
+
+VPC Dashboard-->Start Create vpc
+
+Diff b/w NAT(Network Address Translator) Instance and NAT gatway.
+1) NAT instance Infrastructure as a Service
+    we should maintain. 
+    we should update services. download the updates and run.
+    perfomance issue - we should take care
+    security updates - we should update
+We need write script to make it high available.
+     Perfomance tuning should be done by us
+Note: Load balance for perfomance.
+2) NAT g/w its plotform as a servcie(managed services)
+    No need maintain from our side.
+     HA is implicity maintained by AWS.
+
+Note: prefer NAT g/w 
+word: Be in the position of explain single line
+
+Security Group:
+
+-- Its acts like firewall for the EC2 instance.
+-- Ec2 must have minimum 1 sg and maximum 5 per Elastic N/w Interface.(ENI)
+-- Controlls Incoming and Outgoing traffic.
+-- Modification of a rule takes effect immediatly i.e on fly.
+--** Sg is statefull i.e there is incoming http traffic allow by sg this traffic leaves out without checking what is o/b rules.
+--  source for Inbound rule CIDR,IP or sg.
+
+For inbound rule sg can be source.
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,149 @@
+DNS:(Domain Naming System)
+**************************
+-- Its a peace of software which a mapping b/w a domain name and ip address
+
+Load Blancing:
+**************
+-- It is a Server i.e web server. it distributes the load across multiple backend servers.
+-- based on algorithem do load balancing.Round Robine algorithems
+-- root to least busy server
+-- map DNS to Load balancer internally and LB will decide which least busy server.
+Term:
+super busy.
+
+Load balancers
+ .apache
+ .NGINS
+
+ELB[Elastic Load Balancer]:
+**************************
+-- Plotform as service
+-- It is higly available(HA) i.e scalability nothing but performance
+-- It is highly performable
+
+Supports:
+       1)Internal LB
+       2)External LB
+-- We can do internale as well as external balancing
+-- Internal - within the network -- intranet
+-- External - internet facing n/w -- exposed to the internet.
+-- ELB perform Health Check Operations on the backend services.
+-- If backend server not healthy ELB takes out of service.
+-- Health Checks mean server is down , server not responding in time.    response should get in 2 seconds.
+-- ELB can be integrated with Auto Scalling.
+-- can do SSL(Encript,Decript) termination
+   Browser send Encrypted Data and the process of decripting the data is    called SSL termination.
+-- When we user https client send the req with encryption responsible to    decrypt request
+   nothing but termination of SSL
+-- ELB region specific.
+-- It can be integrated with auto scalling i.e based on the load add    instance.
+   your infrastrucre can grow.
+   scal up, scal down. 
+
+horizontal scalling - adding server
+vertical scalling - incresing ram,cpu,n/w perfomance.
+eg: increase 5 cpu, 8 GB
+-- we can enable cloud watch i.e a monitoring tools with diff metrics of ELB
+
+
+
+
+min 1
+max 5 
+some time low 
+you dont want to terminate instance perticaular instance go for this option.
+
+While configuring Auto Scalling to set min max instances?
+YES.
+can we set min max 
+SSL(secure TCP)
+ 
+
+ELB(Elastic Load Balancer):
+
+-- can load balance the Ec2 instance in the same region.
+
+interval:
+   every 10 sec it will check the status
+Unhealthy threshold: 
+   5 concequitve requests
+
+Service-->Resource Group-->ELB-Elastic Load Balancer
+Health Check
+
+-- should get response in 2 sec
+-- check the health of every 30 min
+-- threshold - 3 time check in every 30 min
+-- threshold nothing but how many  times has to check
+
+if not get the response may be reasons
+server down
+reponse not quickly
+
+
+Task:
+creating ec2 instance install webserver to deploying 
+
+-- create the ec2 instance virtual m/c 
+ssh
+ssh -i ~/D/*.pem ec2-user@instance id
+sudo yum install httpd
+cd /var/www/html/  // if you want to host your website place here i.e document root
+sudo service 
+
+-- on top of it we need  web server 
+-- in web server we need  multiple instance
+--  add to load balancers
+-- DNS name is loadbalancer name
+-- it will do health check every 15 sec
+-- stop on instance and check the response.
+-- Route53
+
+
+what is connection Drainig period?
+
+if ec2 instance is unhealthy befor taking out of service ELB gives certain time
+to ec2 ot complete current processing request.
+
+eg: you server busy its not yet given the reponse of  request it will give the certain time.
+
+
+Stickyness:
+************
+Authenticating the process
+eg:
+webserver1,webserver2,webserver3
+migrate in all server
+1) approach
+   enable stickyness
+eg:  in webserver1 on client1 seconde request has to this server only. 
+client 1:
+first request process by webserver1 then second request should process by webserver1 only. for this we need enable stickyness.
+
+webserver1 -- client 1
+webserver2-- client 2
+webserver 3-- client 3
+
+if we enable sticky session all requests coming from a perticular client is processed by only one server.
+
+2) approach:
+In side server,
+Use
+DynamoDB- no sequal database server, we will store session data.joins will not support
+eg: add to cart. in cart portals.
+use of cache perpose. amozon resource
+DynamoDB-- Amazon resource.
+CacheoDB
+
+Elasitc Beanstalk- tomcat.
+
+application load balacncer -- multiple ports,  classic load balancers- supports single port.
+
+
+
+
+
+
+
+
+

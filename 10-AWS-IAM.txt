@@ -1,0 +1,204 @@
+Identity and Access Management (IAM):
+*************************************
+services-->security,Identity&Co..
+-- create user
+-- specific resource
+
+Using IAM we can create users and grant console access this account.
+
+-- create user
+-- attach permission to user
+-- grant the access to console
+
+Step 1:
+
+Users-->Add user-->set user details-->select AWS access Type:
+-- Programmatic access
+-- Aws Mgmt console access
+
+  Console password
+  Auto pwd
+  Custom password
+
+Require password reset : check
+
+Step 2:
+
+  db admin // only db access give the rds permissions
+  cloud admin // all access
+  you get the one link access that.
+  reset the password
+
+Programmatic access:
+--------------------
+  App code
+  Webserver      ---- app code to communicate --- DynamoDB
+  Ec2 instance
+
+Multifactor authontication :
+----------------------------
+After login ask the some code that code comes to mobile.
+
+
+IAM(Identity Access Mgmt):
+
+Programatic access
+--------------------
+-- you can access from console
+-- you can access from code i.e programatic access
+-- policy represents set of permissions
+-- Roles are generally attached to EC2 instance
+
+
+Add user:
+---------
+select aws access type:
+--From java code to list buckets using sdk we can get progamatic access aws java jdk
+-- to access s3 , bucket from java need accesskey secret access key.
+
+
+MFA: Multifactor Auth
+---------------------
+
+-- it will add one more layer to make a secure. i.e barcode number auth.
+
+eg:
+2 acct 
+user1 acct1
+user2 acct 2
+-- to provide access to get resource  acct1 for user2.
+-- we can configure cross account access 
+
+IAM - Group:
+-------------
+Group Name:
+-----------
+-- Attach Policy- nothing but permission
+-- S3 - Simple Storage Service
+
+Policy:
+-------
+-- kind of document tells what type permissions.
+-- talks about permissions
+-- Using JSON document
+eg:
+To access to Ec2 for the create set of permissions
+To access to S3 for the create the set of permissions
+
+JSON Document:
+-- -------------------
+-- its a Javascript object notation.
+-- represent the data and exchange the data.
+-- Nutral format
+ 
+mango db: represents JSON
+// document about data
+{
+   "empId" :2303109, // Number
+    "name" :"Reddy" ,  // string
+     "isManager":true, // boolean
+     "mobile":["1234566","24234234"] ,  // array
+//Object notation in {}
+      ''address":{
+      "HNO":"40",
+      "city":"Banglore",
+      "Country":"India"
+     }
+
+mutiple objects
+''address":[{
+      "HNO":"40",
+      "city":"Banglore",
+      "Country":"India"
+     },
+{
+      "HNO":"40",
+      "city":"Banglore",
+      "Country":"India"
+     }]
+
+}
+
+Roles:
+-------
+-- likes group only
+-- Roles also act like groups
+-- You attach polices to roles
+-- Roles are mainly used for giving permission to aws resource 
+   it can access aws resources
+
+eg:
+--Ec2 to talk to S3
+--Role attach to instance
+
+-- Ec2 wants a permission to talk to S3 buckets for this we create a role
+   attach a policy which give access to S3 and add this role to EC2    Instances.
+
+Note:
+-- we can assign a role to EC2 instance only at the time of lanching it    after lanching Ec2 
+-- there is no way to attach a role.
+
+-- 2 act - 
+the user in another account i want access of other access
+cross - account access
+--using a role we can enable cross-account access
+
+
+Using IAM:
+----------
+-- we can federate with 3 party identity providers
+-- active directory, google account,facebook
+
+eg: have LDAP user in company and you have AWS account you want these LDAP users in aws account use federate 
+
+
+Managing Pwd Policy:
+
+MultiFactor Authontication:
+
+RSA tokens SecureID:
+
+
+
+
+
+IAM:
+****
+-- allow about securing aws resources.like ec2,s3,load balancer.
+-- we can use IAM to provide console access to diff users.
+
+
+delete your root access keys
+
+How to login to console with diff user and we can give access to aws console
+
+-- creat a user
+-- goto add user
+    user:devopstoolsteam
+    passowd: devops123
+-- it will ask to create group must add group give the    adminstrationaccess and send a email.
+-- EC2 to access s3 if your in same account its completly retricted.
+-- Ec2 places the files in s3.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

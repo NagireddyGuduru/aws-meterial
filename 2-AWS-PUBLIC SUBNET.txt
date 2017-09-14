@@ -1,0 +1,15 @@
+Q: Where we use public subnet?
+   VPN - Virtual privagte n/w
+Q:How you  connecting to VPC?
+  VPN
+
+-- very oftern we should update the m/c
+    security update
+    patching
+
+-- We have a servers in private subnet and we need i/n access for    security updates,patches or enchancements?
+-- This can be configuring by
+     1) NAT Instance
+     2) NAT g/w
+
+-- Setting up NAT instance to give intenet access to private subnet

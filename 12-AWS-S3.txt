@@ -1,0 +1,79 @@
+aws -- 
+
+by default disable.
+
+
+create bucket.
+
+versioning:
+------------
+-- we cannot disable versioning is enable we can suspend.
+	create versioning file
+	delete versioning file
+	restore versioning file
+
+Lifecycle:
+-----------
+
+-- Lifecycle roles to enable you to automatically transition objects to the      standard infrequent access.
+
+-- vesioning must be enabled.
+
+Add rule:
+----------
+Glacier storage very cheap storage
+Glacier storage 90 days minimum.
+but very slow retrival perpose is to store archive files.
+
+Atatic website Hosting:
+-----------------------
+-- s3 dir only for static websites not for dync
+
+Logging:
+---------
+-- we can keep track of each and every request coming to this bucket.
+
+Events
+-------
+--To send notifications for all
+
+SNS topic ARN:
+--------------
+-- cross-region Replication:
+-- when we create the bucket is specific to region.
+-- To replicate the bucket in another region.
+
+Q) how object stored as key and value in s3?
+
+-- s3 is managed server
+-- 5 ppt in one objects
+-- by default object private.we can make it public if someone else to access
+
+Amazon glaciear:
+-----------------
+-- is very very cheap storage.
+-- its mainly used for backups i,e archieves
+-- retrival is very very slow even throgh to recieve one byte take around 4 hrs.
+-- use for only infrequently access.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+Peering Connections
+*******************
+-- Enables to connect multiple VPC into a single N/w
+-- VPC we are peering can be our own account or in a diff aws account.
+-- Trasitive Peering not supporting.
+eg:
+vpc1,vpc2,vpc3
+vpc1 peering with vpc2 -- ec2 instances in vpc2 communicate with vpc1
+vpc2 peering with vpc3
+
+steps:
+1) Create Peering Connections
+2) modify routhing tables
+3) In both vpcs
+ 
+-- you can peer connection only subnets also.
+
+what are the diff ways to access vpc?
+1) Create ec2 with public ip and attach internet.
+2) VPN- Virtual Private N/W
+3) Direct Connect- wired connection
+
+
+
+
+
+
+
+
+
+
+

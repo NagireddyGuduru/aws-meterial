@@ -1,0 +1,28 @@
+Storage optimizations:(HDD)
+base on I/O operations
+
+Ec2 instance resize:
+Note: To resize ec2-instance instance should not be running state.
+
+Storage Types:
+only for Ec2 instances.
+Instance Store
+EBS- Elastic block store
+
+Instance Storage:
+Its a temporary storage associated with Ec2 instance.
+very cheap
+put cache on webserver
+ephemeral storage
+data on instance store is lost if you stop ec2.
+AMIS-->Root device type --> Instance store.
+
+EBS:
+provides persistance storage
+we can dettache from one ec2 and attach to another ec2
+EBS is AZ specific.
+you can takes the backups ie.create the snapshot.
+EBS is HA internally they maintain a replica i.e duplicate copy.
+
+I have EBS in AZ and need data to be linked with in another AZ.?
+Yes, With the help of Snapshot.

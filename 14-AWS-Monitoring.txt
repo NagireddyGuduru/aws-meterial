@@ -1,0 +1,28 @@
+-- cpu credit point
+-- cpu utilization
+-- how many credit points  -
+-- show x base lines - reward point
+-- it give the perfomance above the base line.
+-- no of byte from disk
+-- how many health he did
+-- how many request failed.
+-- hom many request passed
+-- latancy issue i.e time of reponse
+-- perform above base line
+-- Services-->Managment Tools-->CloudWatch-->Metrics
+
+Ec2 Monitoring:
+---------------
+Ec2 dashboard
+All MEtrics
+EC2
+
+ELB Monitoring:
+---------------
+CloudTrail:
+
+-- Loggin service
+-- Using this we can log all api log to our account.
+-- this service logs api calls maid from a console.
+-- there is command line interface.
+-- SDKs

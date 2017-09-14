@@ -1,0 +1,45 @@
+Auto Scalling:
+--------------
+
+eg: Amazon sale when they have offers client will increase obveacilly we     need to increase server
+   on demand can increase the server, on demand can decrease the server.
+
+For this need to Launch Configuration.
+
+eg: cpu utilization above 90 add server. cpu utilization below 50 remover server.
+
+creating server by image.
+
+
+on demand we can add or remove servers based on certain metrices
+eg:disk rides
+
+For Configuring we need couple of steps:
+
+step 1:
+
+-- we should do launch configuration
+-- its a template that your auto scalling group will be used to launch    instances
+-- template equals Ec2 + Webserver+ Application code.
+
+
+step 2:
+
+-- creating of template can be done like this launch Ec2 install web server -- on Ec2 followed by deploy our code on Ec2
+   then create amazon image.
+-- They ask for auto scalling to launch a new instances.
+   images can be fine AMI's under IMAGES
+
+Note:
+we can use 750 hrs is free for month. to use the resources.
+sudo chkconfig httpd on// during reboot m/c restart the webservers.
+Minimus 2 servers
+
+
+
+
+
+
+
+
+

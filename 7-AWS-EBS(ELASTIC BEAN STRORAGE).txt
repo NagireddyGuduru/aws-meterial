@@ -1,0 +1,48 @@
+How many ways can create EBS
+*****************************
+1) At time of lanching Ec2 instance
+2) Ec2 d/b-create volume
+3) we can create EBS from a snapshot
+
+volume : drive
+---------------
+-- we can attach one volum for one Ec2 instance
+-- snapshots stored in S3. we cannot see physically
+-- EBS supports Data encryption
+
+EBS - Volume Types
+-------------------
+1) General Purpose SSE -- its not for production usage
+   Note:30 GB free
+   -- Any General Purpose its not for production usage.
+2) Provisioned IOPS SSD 
+   -- ment for m/c critical operations
+   -- RDMS,Mango DB
+   -- Mainly for database application 
+   -- IO  operations
+3) Throughout optimized HDD
+   -- IO operations + size of data
+   -- Bigdata,Hadoop
+   -- amont of data . size of input and size of output.
+   -- reading is 1GB
+   -- frequently accessed data
+4) Cool HDD
+   -- Infrequently access data go for Cool HDD.
+   -- cheap storage
+   -- 65,000 i.e 65000 hits in this case we need 3 valumes
+   -- above 65000 go for RAID
+
+Terms:
+******
+
+IOPS-Input output operations per second
+incremental snapshots
+onrest
+ontransit
+cemetric is  required for encryption
+
+Links:
+******
+https://aws.amazon.com/ebs/details/
+
+

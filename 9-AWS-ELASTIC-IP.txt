@@ -1,0 +1,11 @@
+Elastic IPs
+
+-- once you stop the public ip if start again ip address will be change.
+-- to make static ip using elastic ip.
+-- create elastic ip to ec2 instance.
+-- private IP address is vpc 
+
+-- public ip will change whenever you restart.
+-- elastic ip will not change
+-- i can attach to another ec2 instance.
+-- there is going to be a minimal charge if elastic ip not associated    with running instance.

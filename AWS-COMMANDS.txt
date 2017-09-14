@@ -1,0 +1,25 @@
+To login to Ec2 instance from our Laptop
+
+ssh -i ~/Download/weekend-keypair.pem ec2-user@54.202.33.87
+
+Issues: Face Connection Refused
+Check the inbound rule in Sg
+
+Issue: Permissions are too open
+chmod 400  ~/Download/weekend-keypair.pem
+
+To Install apache server in Ec2 instance
+sudo yum install httpd
+sudo service httpd start // to the server
+sudo service httpd status
+access the url
+http://localhost:80
+-- to create html file 
+cd /var/www/html/ // deployment location of apache server
+
+sudo service httpd start
+sudo chkconfig httpd on // automatically start.
+
+
+
+
