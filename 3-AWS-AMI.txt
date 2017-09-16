@@ -1,20 +1,23 @@
 AMI(Amazon Machine Image):
 **************************
 -- It is template of OS Image.
-Security Group: 
-***************
--- its kind of firewal .what protocal has to accept
-Source:
-*******
-who can do ssh
-ssh can anywhere : Not a good idea in company
-ssh can custom: put CIDR Block of company n/w
-ssh can My Ip
-ssh should be custom.
+-- Amazon Machine Image, AMI is a template that contains, OS and Pre configured softwares(java/pythond/ruby etc..)
 
-0.0.0.0/0,::/0
+Demo:
 
+-- Launch Ec2 instance.
+-- Install the software required.
+-- Take a image out of this instance.
+-- Goto Action -- select Create a Image
+-- while create image by default it will reboot.
 
+-- By default custom AMI is private.
+-- we can share with other AWS account.
+-- we also can make this public.
+-- the limitation is region specific.
+
+AWS marketplace - taken the reseved instances but your company shutdow so can put in marketplace get refund some amount. 
+Community AMIs
 
 Elastic Ip:
 ***********

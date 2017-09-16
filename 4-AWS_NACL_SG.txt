@@ -12,6 +12,7 @@ SG:(Security Groups)
 -- SG does not have explicit Allow/deny.
 -- If you allow SSH traffic other traffic are implicity denied.
 -- SG Source options 
+     who can do ssh
            -- My IP
            -- Custom -- company range/ - mention CIDER of perticular network./ SG as source.
                 ::/0 - IPV6 notation

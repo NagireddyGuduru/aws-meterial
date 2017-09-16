@@ -1,0 +1,2 @@
+1) VPC flow Logs
+2) Create a new user in ec2 and configure public key and private key.

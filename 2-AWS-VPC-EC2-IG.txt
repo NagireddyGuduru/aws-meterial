@@ -81,6 +81,57 @@ Internet Gateway:
 -- Can we attach morethan one i/g to single VPC?
 -- Giving the access at datacenter level
 
+Protecting accidental termination of EC2 instance
+---------------------------------------------------------------
+
+-- This protection can be enables while launching or even after instance is launched.
+
+DEMO:
+
+while creating Ec2 instance - in - Configuration details 
+
+Enable termination projection : select project against option
+another way,
+
+In Actions, Instance Setting --change shutdown behaviour
+
+Ec2 - User Data
+--------------------
+Using user data we can run certain scripts(shell/pytho/ruby) at the time of lanunching ec2 instance.
+
+Demo:
+
+In step 3 , Advance details, User data
+we can upload file and copy paste the script
+
+sample script:
+#! /bin/bash  //This tell your shell or OS
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "<h1> welcome to AWS </h1>" > /var/www/html/one.html   // > = redirecting
+
+Note: user data 
+
+Ec2 logs location:
+---------------------
+cd /var/log/
+ls // list the files
+cloud-init-output.log // can see output to troubleshoot the issues.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
