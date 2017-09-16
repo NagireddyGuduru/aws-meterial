@@ -1,17 +1,32 @@
 Peering Connections
 *******************
--- Enables to connect multiple VPC into a single N/w
--- VPC we are peering can be our own account or in a diff aws account.
+-- Is Used to enstablish network communication between two VPCs.
+-- Enables to connect multiple VPC into a single N/w.
+-- VPCs can be same or different AWS accounts.
+-- For VPC peering, both must be in same region.
+-- For peering VPCs across different regions we can go with vpn or direct connect.
 -- Trasitive Peering not supporting.
-eg:
-vpc1,vpc2,vpc3
-vpc1 peering with vpc2 -- ec2 instances in vpc2 communicate with vpc1
-vpc2 peering with vpc3
+    VPC 1 -- VPC2 -- VPC3
+    VPC1 peering VPC2
+    VPC2 peering VPC3
+  but we can not communicate VPC1 instances with VPC3 instance again we need direct connection.
+
+NOTE: CIDER notation should be different. i.e should not have same ip address in both VPCs
+
+DEMO:
 
 steps:
-1) Create Peering Connections
-2) modify routhing tables
-3) In both vpcs
+1) Need two VPCs.
+2) Atlease need 1 subnet in both VPCs
+3) Create Peering Connections
+    peering-demo
+   Local VPC - give your VPC
+   VPC (Accelator) -  give another VPC.
+4) Goto action accept the Request.
+5) Modify routhing tables in both VPCs.
+     target should be vpc peering connection.
+    Destination is IP address of your laptop
+     VPC CIDER 10.0.0.0/16
  
 -- you can peer connection only subnets also.
 

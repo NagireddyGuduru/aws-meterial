@@ -1,13 +1,79 @@
-NACL(Network Access Control List)
-Security Groups(SG)
+SG:(Security Groups)
+----------------------------
+-- one kind of firewall
+-- SG for EC2 instance level .
+-- Every EC2 instance must be associate with altlease security group.
+-- Max 5 SG/ENI(Elastic network interface) can attach to ec2 instance.
+-- Multiple instance can have same SG.
+-- Every SG have one inbound rule(traffic going to ec2) & outbound (traffice going from ec2) rule. 
+-- Security Groups acts lika a virtual firewall for you EC2 instance to control inbound and outbound traffic.
+-- Security Group is State full. same inbound rules are applay to outbound.it will not check outbound rules.
+-- Modification to the SG rule take effect immediately.
+-- SG does not have explicit Allow/deny.
+-- If you allow SSH traffic other traffic are implicity denied.
+-- SG Source options 
+           -- My IP
+           -- Custom -- company range/ - mention CIDER of perticular network./ SG as source.
+                ::/0 - IPV6 notation
+                 ec2 instanche have sg can access.
+                 where:
+                  Webservers
+                  LB --- WS1 -WS2 -WS3   -- DB(webserver acces this db.) the security group of DB can be use securit group of Webservers.
+                   In Webserver SG can LB security group so only LB will have access.
+              To Specify IP address 10.20.20.1/32
+           -- AnyWhere
+  Traffic nothing but a request.
+  Traffic is initiated by a machine ec2.
+  Traffic initated from internet.
+  when you send the requst goes to Network ACL and then Security Group and then EC2
 
+Custom TCP - To customize port eg: httpd by default run on 80 to change this to 88.
+                         select Inbound rules and change the port Range.
+
+
+
+In Ec2 
+---------
+3 layers of securities.
+1)  id password of your ec2 inst
+2)  sg
+3)  NACL
+
+
+all public ec2 instance will get internet.
+but what about private ec2 instance to the get internet for some reasons like security updates, every day patching...
+
+Demo:
+
+1) create ec2 instance
+2) start the machine
+3) access the ec2 from terminal.
+4) goto security group check inbound rules and outbound rules.
+5) remove the outbound rules.
+
+test: 
+ping ip address if you still get response.i.e state full. this is from your laptop i.e internet.
+ping google.com ping from your instance not get response i.e state less.
+
+NOTE: All Network related resource under VPC.
+
+NACL(Network Access Control List)
 NACL:
 --------
 -- one kind of virtual firewall.
--- NACL for subnet level.
+-- NACL for subnet level firewall.
+-- A NACL  is implicity created at the time of creating VPC,this NACL is called as default NACL.
+-- When a subnet is created, it is implicitly attached to default NACL.
+-- Rules of default NACL
+    -- Default rules allow all inbound and outbound.
+-- NACL has explicity Allow and Deny
+-- NACL is state less.
+-- Changes to NACL rules take effect immediately.
 -- NACL acts like a virtual firewall for your subnet to control inbound & outbound traffic.
--- In one subnet you can have n no.of EC2 instances. 
--- can not have 2 NACL for a subnet.
+-- One subnet can have only one NACL. can not have 2 NACL for a subnet.
+-- Same NACL can be associated with multiple subnets.
+
+
 Rules of Default NACL: 
 ------------------------------
 -- it accepts all inbound and it allows all outbounds.on top of that we can add retrictions on i/b and o/b traffics.
@@ -52,25 +118,12 @@ The best partice to give a number to rule
 100,200,300.....etc. in hundreds the reason is we will a scope to put rule b/w 100 and 200.
 1 and 2 to put rule its not possible.
 
+DEMO:
+In Default NACL,
 
-SG:(Security Groups)
-----------------------------
--- one kind of firewall
--- SG for EC2 instance level .
--- Every EC2 instance must be associate with security group.
+Add Rule
+50 ALL trafif      source ip addres DENY
 
--- Security Groups acts lika a virtual firewall for you EC2 instance to control inbound and outbound traffic.
-
-In Ec2 
----------
-3 layers of securities.
-1)  id password of your ec2 inst
-2)  sg
-3)  NACL
-
-
-all public ec2 instance will get internet.
-but what about private ec2 instance to the get internet for some reasons like security updates, every day patching...
 
 
 
