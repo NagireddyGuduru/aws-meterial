@@ -1,5 +1,7 @@
 Identity and Access Management (IAM):
 *************************************
+-- We should not use root users for day to day activity we have to create admin user and use it instead of root user.
+
 services-->security,Identity&Co..
 -- create user
 -- specific resource
@@ -15,7 +17,7 @@ Step 1:
 Users-->Add user-->set user details-->select AWS access Type:
 -- Programmatic access
 -- Aws Mgmt console access
-
+Note:(allways better to give both)
   Console password
   Auto pwd
   Custom password
@@ -34,6 +36,9 @@ Programmatic access:
   App code
   Webserver      ---- app code to communicate --- DynamoDB
   Ec2 instance
+  
+eg:  python application upload to s3 and you want cli
+	 cli - helps to integrate with tools like jenkins
 
 Multifactor authontication :
 ----------------------------
@@ -56,11 +61,28 @@ select aws access type:
 --From java code to list buckets using sdk we can get progamatic access aws java jdk
 -- to access s3 , bucket from java need accesskey secret access key.
 
+reset the password
+-------------------
+- users-security credentials - manage password - require password reset select
+
+Customize login url for user:
+-----------------------------
 
 MFA: Multifactor Auth
 ---------------------
 
 -- it will add one more layer to make a secure. i.e barcode number auth.
+-- enabling MFA
+ - root user - activate MFA for root user
+ - devices - virtual device and h/w device(rsa token generate device)
+   select - virtual device
+ - manage MFA device - scan device
+
+ enable MFS for root user
+ enable MFA for IAM users
+
+Note: you cannot operate two user in same browser
+
 
 eg:
 2 acct 
@@ -75,16 +97,90 @@ Group Name:
 -----------
 -- Attach Policy- nothing but permission
 -- S3 - Simple Storage Service
+-- create New group -> group name -> add ec2fullaccess and add users in that group.
 
 Policy:
 -------
 -- kind of document tells what type permissions.
 -- talks about permissions
 -- Using JSON document
+-- It json formate containing set of permissions. we can attach a police to the user,group and role.
+-- create policy:
+	policy have version and statement
+	In statement, have action,resources
+		action - launch instance, stop instance, create IAS user
+		Resources - all resources ie. ec2, RDS,
+					any ec2 instance
+					any RDS instance
+
+	ec2 - is service
+	ec2 instance is resource
+	
 eg:
 To access to Ec2 for the create set of permissions
 To access to S3 for the create the set of permissions
+i want policy which allows iam user to start, stop and list ec2 instances.
 
+steps:
+
+	1) create a policy
+	2) visual editor: generate json file.
+    3) service - ec2
+	4) actions - if you want all select all ec2 instance or search in search box - with start, describeinstances(list the ec2instance),stopinstances
+    5) Resources: all resources - anyone can instance and start and stop.
+    6) Review Policy
+	7) Assign to some user
+    8) Select user- filter polices- select the policy-add permission
+	
+	Test: Login user and check ec2 instance settings.
+As of Today AWS policy does not support decribing specific instances.
+For this policy we need to statements
+ describe instances on all resources
+ start,stop instances only on dev server
+ 
+ Service
+ 
+ Actions
+     Startintances
+	 StopInstancs
+Resources All resources
+
+Request conditions:
+
+      MFA: all to user to perform specified action.
+      Source IP : allow from this ip , allow from your organization.	
+
+Add request condition:
+
+  condition key : ec2:ResourceTag
+  Tag Key Env
+  Qualifier:  
+  Operation: StringEquals
+  Value: DEV
+  
+  Attach this policy to user
+  
+Example:
+  Add a policy with two statements 
+    1) to describe - how shuld able to see the tags also   option: describe*
+	2) to start and stop based on tags if ENV is DEV and PROD then only have the option to start and stop
+	
+	
+Example: I want user can start and stop on jenkins instance i.e based on resources
+
+   service: EC2
+   actions READ
+   Resources : all resources
+   
+   
+   next statemnt
+   
+    Resources- Specific
+	Instnaces : Add ARN to restrice access
+	AmazonResourceName- its a string with specific formate which uniquly identifies any amazon resources.
+	AccountID - get from BillingDashboard
+	
+	IF multiple instances are there then add one ARN
 JSON Document:
 -- -------------------
 -- its a Javascript object notation.
@@ -119,6 +215,8 @@ mutiple objects
 
 }
 
+
+
 Roles:
 -------
 -- likes group only
@@ -126,6 +224,33 @@ Roles:
 -- You attach polices to roles
 -- Roles are mainly used for giving permission to aws resource 
    it can access aws resources
+-- Role is similar to user which attached with policies
+-- The role is used in the following usecases 
+-- Roles attached to resouces not to user
+-- service level access - service to service access do the with help of Role.
+-- cross account access .
+-- web identity - facebook,gmail
+-- SAML federation - ldap,AD
+
+ec2-user - ssh user
+IAM user - cloud based user
+group belongs to user
+
+eg: you application has communitcat with S3,DB
+this is the case i will create role and attache to Ec2 instance
+
+Example:
+create a role for ec2 which allows all operation on s3.
+
+Role:
+
+slected type of trusted entity:
+
+-- AWS services
+
+  EC2
+  
+  Permission S3 fullaccesss   
 
 eg:
 --Ec2 to talk to S3
@@ -142,6 +267,36 @@ Note:
 the user in another account i want access of other access
 cross - account access
 --using a role we can enable cross-account access
+
+
+Demo:
+
+ssh ec2 instance 
+use aws cli
+apt install python-pip
+pip install awscli
+
+aws s3 ls
+aws ec2 describe-instances --region= - will unauthorizedoperation
+
+Account Settings:
+
+Prevent password reuse - 3 mean you cant use last 3 used passwords
+
+Encryption Keys:
+
+This key are used to encrypt and dycrypt data.
+
+If enable Encryption on EBS volume we have choose a key from KMS.
+
+RDS also support encryption
+
+s3 also support encryption
+You can get your own key
+
+
+check video AWS + AD integration
+
 
 
 Using IAM:

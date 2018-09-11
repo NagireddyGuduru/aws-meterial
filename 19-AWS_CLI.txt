@@ -1,0 +1,36 @@
+aws cli:
+You can perform operation on aws using cli.
+
+other options are manage console
+
+setting up command line interface on local m/c:
+
+1) install cli
+2) configure permissions, this require programmatic access to get this required IAM d/b
+3) create a user with programatic attach the permission.
+4) open cli and configure accesskey and scretkey
+5) aws configure
+   AWS access key ID:
+   before try to access : aws s3 ls
+   output formate- leave empty- default json, support text,tabuler
+   verify:
+    aws s3 ls
+   
+
+Task: setup cli in window and linux m/c and lanch ec2 instance 
+ run instances
+ cmd: aws ec2 run-instances --image-id=ami-188fb77  // try to launc multiple instance
+      aws ec2 stop-instances 
+
+
+NOTE: aws cli profiles if wanna manage multiple accounts from cli you need multiple access key and screte keys 
+     this is managed using  profiles
+	 when you configure accesskey,sk those details in the following files.
+	  .aws/
+	  
+	 aws configure --profile ibm
+
+    in config file:
+    [default]
+    [ibm]   
+
