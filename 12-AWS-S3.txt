@@ -1,3 +1,103 @@
+S3(simple storage service):
+
+-- object based storage
+-- Object can be file,video,pdf,...etc.
+-- one object size can be 5TB. If more than split object and store.
+-- supports server side encryption of data
+-- when data transfer in network should encrypt and when store data encryption
+-- Supports REST & SOAP APIs
+-- s3 is highly scalable.
+-- we can store unlimited data.no need to mention the capacity how much GB required
+-- No need to specify the size.
+
+S3 use cases:
+
+-- Backups & Recovery
+-- eg: database backups,ebs backups,log backups.
+-- Big data analytics.
+-- Data archiving.
+-- the following objects can be stored on S3 taf files,zip files,pdf files,word  document,xsl,audio,videos,images..etc.
+
+-- eg: facebooks use object storage to store the videos
+-- youtube videos 
+-- amzon shopping 
+
+BUCKET:
+-- to store the data in s3 we need to create bucket.
+-- Its a container for objects stored in amazon s3.
+
+Object:
+-- objects are the fundamental entities stored in amazon s3
+
+Keys:
+Key is the unique identifier for an object within a bucket.Every object in a bucket has exactly one key.
+
+Regions:
+You can choose the geographical region where amazon s3 will store the buckets you create.
+You might choose a region to optimize 
+
+S3 Storage Classes
+ Standard - it maintain 3 copies
+     99.99% availability
+-- 99.99999999999 Durability - the percent of loosing data very less.
+
+Standard IA - Infrequently Accessed 
+Same as Standard but storage cost is less.
+
+Reduced Redundancy
+ Durability low.
+ 
+OneZone- IA
+Chepest storage all 4
+- objects are kept in one zone.
+- it is intend for infrequently access and re createble(already backedup objects) access(we can create from some other object i.e secondary objects)
+- 20 % lower cost than s3
+
+primary backup
+secondary backup -
+
+S3 demo:
+
+Creating S3 bucket
+
+Create bucket-
+  Bucket name - Javahome-vides
+  Regions- choost optimized cost
+
+  Copy setting from an existing bucket - copy from existing bucket
+  
+
+
+
+Click Next
+   Set Propeties-default
+
+Next
+Set Permissions- default
+
+Uploading Object into S3
+Upload a file
+Manage PUblic permission
+Grant read access to other 
+
+Encryption:
+
+Select Amazon s3 
+
+Deleting object:
+Goto more option- delete.
+
+
+In Free trail upto 5GM free
+2000 objects can store
+20000 get request - getting requests
+
+
+Note:
+-- EBS- data broken into blocks  - block storage
+-- EBS- not support REST and SOAP APIs
+-- Instance storage - temporary storage.
+
 aws -- 
 
 by default disable.
@@ -7,35 +107,130 @@ create bucket.
 
 versioning:
 ------------
--- we cannot disable versioning is enable we can suspend.
+-- we cannot disable versioning is enable. we can suspend.
 	create versioning file
 	delete versioning file
 	restore versioning file
+-- 	enable versioning you want to avoid accedental deletion of objects.
+-- by default it is disable.
+-- when enabled when you upload same object multiple times its maintain multiple copies and every copy is discreapped.
+
+eg: I have video and uploaded 10 times then enable versioning that video maintained with 10 versions.
+  5*10
+-- if you delete an object when versioning is enabled it wont delete pyhsically instead s3 addes delete marker.
+-- you can restore your object by deleting delete marker.
+-- Once versioning is enabled you cannt disable. you can only suspend.
+
+Task:
+upload same object in 3 times and enble vesioning  and verify.
+
 
 Lifecycle:
 -----------
 
 -- Lifecycle roles to enable you to automatically transition objects to the      standard infrequent access.
-
 -- vesioning must be enabled.
+-- using lifecycle roles you can manage life cycle objects
+-- you can automate object transition.
+-- have object in s3 after 6 months want to move Glacier(like s3)
+-- also can expire your objects using life cycle groups.
+-- we are managing application loggs for a bank in s3.(bank will prefer logs forever)
+-- all six months old object must be in standard.
+-- object having age 6-1 yr must be move to standard IA.
+-- object having age 1yr-5yrs must be in OneZone-IA.
+-- 5-10yrs must be in Glacier
 
 Add rule:
 ----------
 Glacier storage very cheap storage
 Glacier storage 90 days minimum.
+
+Lifecycle rule:
+
+steps:
+
+rule name
+prefix:
+
+log/
+Lifecycle(tag)/ -- while create object creat tag with Lifecycle
+
+trasition:
+configure trasition:
+current version select
+Transition 
+object creation Days after create -180
+Sandared IA          180(3 months)
+One zone-IA          365
+Glacier              2000
+
+Configure expiration:
+
+Expiretion current version of object
+3650
+
+multipart video upload via code or cli we can achieve in console there is no option
+ 
 but very slow retrival perpose is to store archive files.
 
-Atatic website Hosting:
+Static website Hosting:
 -----------------------
 -- s3 dir only for static websites not for dync
+-- we can host a static website on s3. static website built on HTML and css. it doent include server side tech java,python..etc.
+-- to upload a folder drag and drop then only it will upload file and folder.
+
+
+
+site:
+json viewers
+javahome-app in github
+
+permission-give public access
+
+
+
 
 Logging:
 ---------
 -- we can keep track of each and every request coming to this bucket.
+-- to create log file it will take 10-20min
 
+-- to log application logs into s3 
+  - in java code write logs in s3 buckets
+  - using cloud watch agents
+  
 Events
 -------
---To send notifications for all
+-- To send notifications for all
+-- when a image is uploaded to s3 automatically create diff thumnails of the image for diff devices like smartphone,webbrowser.
+-- when a image is uploaded automatically resize the image or compress the image for perfomance.
+-- there is a application placing,comma saparated text in s3.pick it process it and persist in db.
+Task:
+Upload json
+pick it and process it
+persist in db
+
+steps:
+Events-- notification -- Name(procees json_file)-events(put,ObjectCreate)- suffix(.json looking json files) - sendto(SNS Topic)
+- SNS
+Note: SNS while configuring SNS- add a role to who can access - option- Edit topic policy
+Basis veiw  advance view
+
+Task:
+
+Figureout a policy for SNS which allows s3 event to publish
+
+Cross Region replication:
+-------------------------
+- Any Object uploaded to source bucket can we replicated to a destination bucket which is in diff region.
+- By Default, it is disabled.
+- After Enabling Cross Region replication only feature uploads are replicated.it wont replicate existing uploades
+- to upload existing uploades have to write python script like d/w files and upload to new region.
+- version has to enabled source bucket and destination bucket.
+- Replication Rule
+
+Note: if delete source bucket and destination bucket.    
+
 
 SNS topic ARN:
 --------------
@@ -51,10 +246,28 @@ Q) how object stored as key and value in s3?
 
 Amazon glaciear:
 -----------------
+-- is object based storage it is design for archieves.
+-- it is cold storage - i.e retrival slow.
 -- is very very cheap storage.
 -- its mainly used for backups i,e archieves
 -- retrival is very very slow even throgh to recieve one byte take around 4 hrs.
 -- use for only infrequently access.
+-- in s3 call it bucket in glaciera call it vault.
+-- to upload object in vault using cli and sdk(java,python,C#)
+
+
+Snow ball:
+- large scall db
+- created job - book a snow ball(pendrive) - again send it back - they will upload 
+
+google search
+usd
+myip
+json viewers
+
+
+
+
 
 
 
