@@ -1,0 +1,22 @@
+Rout53
+------
+
+Routing Policys:
+
+
+simple
+wightage
+latancy:
+
+latancy for region 1 150 ms and region 2 100ms 
+this policys routs to region 2
+
+
+failover:
+this policy ment for disaster recovery.
+
+Geolocation:
+
+based on cliens geographical location the traffic routed a specific region.
+
+
