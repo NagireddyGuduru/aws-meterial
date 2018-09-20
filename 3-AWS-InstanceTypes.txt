@@ -1,4 +1,4 @@
-Instance Types:
+Instance :
 t2.micro here 
 
 t - bustable performance

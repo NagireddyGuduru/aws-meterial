@@ -56,8 +56,18 @@ Terraform Editor:
   
   format setting:
   check Format on save.
+
+  terraform it donest care file name it care about extension
+  - do the thing by refering document
   
   
+  run tf file:
+   goto project- terraform apply
+   first - terraform init 
+   #terraform interpolication ${}
+   
+terraform state file:
+   
 
 Configuring Access key and Secret Key for Terraform
 We have multiple ways to do this
@@ -158,6 +168,8 @@ git push -u origin master
 Google:
 
 Packer tool - create aws ami
+
+
 
 
 
