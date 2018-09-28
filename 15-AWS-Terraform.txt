@@ -48,6 +48,7 @@ Ways to Create
 -- tempory keys - tokens
 
 Terraform Editor:
+-----------------
 - Atom Editor
   goto https://atom.io/
   - install atom
@@ -67,7 +68,101 @@ Terraform Editor:
    #terraform interpolication ${}
    
 terraform state file:
+---------------------
    
+terraform destroy:
+------------------
+ - delete all resources provisioned by terraform.
+    terraform destroy
+ - delete a specifice resource
+    terrafrom destroy --target=aws_vpc.main
+auto approve:
+------------
+ - terraform apply -auto-approve
+
+terraform plan:
+--------------
+ - terraform plan
+   gives information about what changes going to when you run apply.
+   
+terraform also support variable type,Lists & maps along with variables
+
+data source:
+------------
+- terraform have diff type of data sources out of that AZ is one.
+
+terraform count:
+---------------
+- terraform have a functions
+- 
+search terraform interpolcation
+
+
+
+Task:
+2 public subnets
+2 private subnets
+
+Task:
+In region have 2 available zones then add two subnets
+In region  have 4 available zone then add 4 subnets
+solution:
+data.aws_availability_zones.azs.names[count.index]
+
+Task:
+create route table for webservers
+
+Task :
+ - create subnet with 2 az.
+ - create RDS
+ 
+Task:
+ - Add instances into public subnet
+ - Install Apache and deploy web application
+ - Add 2 instances
+
+ Home Task:
+  - add ebs volume to ec2 instance
+
+Terraform functions:
+********************
+lookup -  is a function to pick a value from a map.
+lookup(map,key,[default]) - here default key donest exist return default value.
+
+variable "my_map" {
+type = "map"
+default = {
+key1 = "value1"
+key2 = "value2"
+}
+}
+"${lookup(var.my_map,key2,"defaultvalue")}"
+"{var.my_map["key1"]}"
+eg: to create subnet in multiple regions.
+
+Data source:
+
+Using data source you can pick certain values dynamically eg:
+availability zones. in one region have 2 az, some regions have 5 az.
+
+#Return list of availability zones in current region
+data "aws_availability_zones" "zones"{}
+
+terraform console
+"${data.aws_availability_zones.zones.names}"
+"${data.aws_availability_zones.zones.names[0]}"
+"${aws_subnet.webservers.*.id[count.in[count.index]]}"
+
+- beform this terraform apply then only it will show.
+
+you can get current region.
+
+aws caller identities:
+you can get account id, arm, user.
+
+Task: get Nat instance dynamically. using filters.
+
+
 
 Configuring Access key and Secret Key for Terraform
 We have multiple ways to do this
@@ -77,8 +172,8 @@ Use AWS CLI
        2) Directly Provide secrete key and access key in terraform itself.
        3) We need to export credentials and region i.e Environment variables.
                 
-
-
+-- default resources better to avoid. eg. 	default subnet,vpc not created by terraform. so better to create subnets using terraform			
+-- import existing resource into terraform.				
 
 Terraform repo
 
@@ -137,6 +232,9 @@ terraform plan
 terraform apply
 terraform show
 terraform destroy
+terraform console
+
+NOTE: 
 
 Terraform variables
 
@@ -170,6 +268,23 @@ Google:
 Packer tool - create aws ami
 
 
+Terraform Modules:
+******************
+
+VPC(module)-- DEV vpc -- TEST vpc -- Prod Vpc
+
+
+
+Project with module:
+
+   --- modules
+       --vpc  
+       --s3
+	   -- rds
+	   -- route53
+   -- stg
+   -- prod
+	
 
 
 

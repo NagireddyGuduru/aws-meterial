@@ -1,0 +1,138 @@
+Lamda:
+
+-- lamda functions are very important for developer,devops,cloud admins,cloud bigdata,IOT,data science
+
+-- Lamda is server less compoute resource.
+
+-- running code without thinking about servers
+
+serverless:
+
+-- serverless mean server are there we are not going manage.
+-- 0 maintain servers
+-- benifs:
+ - no servers to manage.
+ - flexible scaling- there is scroll to adjust cpu.
+ - automated high availability.
+ - No need to pay for idle time.you wont get bill when code is not running.
+ - we can save upto 90% of cost when we go serverless.
+ 
+- lamda logs are stored in cloudwatch.
+-  
+ Once resource up and running lamda will use to automate.
+ auto tagging:
+ ------
+ - whenever a new resource like ec2,auto scalling,s3 is created we wonna automatically apply 5 common tags.
+ - there is a application sending comma separated file csv files to s3 when these files apears in s3 process it and store it in mysql db.
+ 
+ diff b/w scheduling and event.
+ 
+ Usecases:
+ 
+EBS backups every 3hrs
+Ec2 instancs run in business hours
+Discards old backup and snapshot.
+Boto3:
+- is python SDK for amazon web services.
+- 
+Example:
+
+Creating first lamda function Send an email when any ec2 stops.
+
+steps:
+
+ec2 stopped --event-- Lamda ---- SNS -email-->Subscriber
+
+1) create IAM role
+     - a) we need a policy add permissions to SNS and cloudwatch logs.
+     
+      create a policy - 
+	  service 1 -cloudwatch logs actions
+	  service 2 - SNS - or publish
+	 
+    policy name : lamda_example_onwe
+      b) create role: 
+       choose the service that will use this role while creating role.
+2) create SNS topic
+   - ec2-alerts
+    -publish the message.
+
+3) make sure one ec2 is there for testing.
+4) create lamda function
+         .authore from scratch Blueprints   .AWS serverless  .application Repository
+    1) author from scratch
+	     Name: alert_when_ec2_stops
+		 Runtime: lamda support node,go,java, c#,python.
+		 select: python 3.6
+      	 role: alert_role
+         code entry type:
+              		 
+
+5) configure event for this lamda function when ec2 stops.
+
+   Designer:
+       Add triggers
+	      cloudwatch events
+		     Rule: ec2_instances_down
+             Rule Type: Event pattern
+			      Ec2
+				  Ec2 instance change notification
+			 Details
+			    .state .instances
+				select state
+				select instances
+				   provide instance id
+			 code:
+
+import json
+import boto3
+sns_client = boto3.client('sns')
+def lamda_handler(event,context):
+ sns_arn=''
+ sns_subject= "Ec2 stopped Alert"
+ sns_msg = "Ec2 Instance stopped !!!!!"
+ sns_client.publish()
+	sns.client.publish(
+	TopicArn = sns_arn,
+	Message = sns_msg
+	Subject = sns_subject
+)
+	
+	
+
+
+search:
+boto3 sns					 
+   	
+    	
+    
+
+	 
+	  
+	  
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
