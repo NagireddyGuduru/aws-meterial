@@ -1,0 +1,244 @@
+Python Scripting and Boto3
+**************************
+Boto3:It is python module for amazon web services.
+
+Python Scripting:
+*****************
+
+1.Popular scripting language today
+
+2.It’s used for many use cases like
+
+  a.for scripting devops, cloud computing, linux admin, networking etc etc..
+
+  b.Used for development also
+       i. we can create web based application as well
+       ii.Big data - analytics
+
+  c. Data science
+
+  d. AI – Artificial Intelligence
+
+  e. MI – Machine Learning
+
+  f. Python every where
+
+3. It’s open source
+
+Python Features:
+****************
+
+1. It’s simple to use and learn
+
+2. It targets precise syntaxes , shorthand syntaxes
+
+Installing python3 in windows:
+****************************
+google => python
+
+While installing , make sure you select the add the path for python.
+
+Install PYCHAM:
+***************
+Google => Download pycham => Community
+
+open Python terminal (windows command prompt)
+
+>>> print('welcome to pythpn')
+
+welcome to pythpn
+
+>>> 
+
+ 
+
+Adding two numbers
+
+1.       Python is dynamically typed language, we should not define data type while defining variables.
+
+2.       Python decides a runtime
+
+3.       >>> a=10
+
+4.       >>> type(a)
+
+5.       <class 'int'>
+
+ 
+
+>>> a=10
+
+>>> b=20
+
+>>> result = a+b
+
+>>> print(result)
+
+30
+
+>>> 
+
+>>> a=10
+
+>>> b=20
+
+>>> result = a+b
+
+>>> print(result)
+
+30
+
+>>> result
+
+30
+
+>>> 
+
+ 
+
+>>> del result
+
+>>> print(result)
+
+Traceback (most recent call last):
+
+  File "<stdin>", line 1, in <module>
+
+NameError: name 'result' is not defined
+
+>>> 
+
+ 
+
+ 
+Python Input:
+
+x= input('Enter x value')
+
+y= input('Enter y value')
+
+z = x+y
+
+print('sum of {} and {} is {}'.format(x,y,z)) // format the string with certain values it will replace the values 
+
+Type convertions:
+
+x= input('Enter x value')
+x= int(x)
+y= input('Enter y value')
+y= int(y)
+
+z = x+y
+
+print('sum of {} and {} is {}'.format(x,y,z)) // this more readable
+
+Python Indentation:
+
+- Python completly work on Indentation.
+
+
+Data Types:
+
+#Number
+x=10
+y=10.20
+
+print(type(x))
+print(type(y))
+print(x+y)
+
+#Boolean
+
+x=True
+y=False
+
+print(type(x))
+
+#string
+name = 'Java Home'
+location = "Banglore"
+full_address = """
+     NO 40,B Narayana pura,
+	 Banglore
+	 Karnataka
+"""
+
+Multiline comment
+
+'''
+This is your
+'''
+
+Function:
+ 
+ name = 'python'
+ 
+ print(name.upper())
+ print(name.capitalize())
+ print(name._len_())
+ 
+ split:
+ data ="Rakesh,25,Banglore"
+ x= data.split(',') // here x have three value behind 
+ #x = ["Rakesh",25,"Banglore"]
+ print("Name is "+x[0]) //here doing concartination
+ print("Age is"+x[1])
+ print("Location is"+x[2])  
+ 
+ 
+ Slice:
+ ------
+ To extract perticular potion.
+ 
+ data = 'Unhappy'
+ x = data[2:] # This returns happy(from index 2 till end of the string)
+ print(x) 
+ x = data[2:4] # ending index is exclusive , this returns ha (from index 2 till 4-1)
+ 
+ x = data[::] # step 
+ x= data[::2] # move to 2 steps
+ # start at 0
+ # Stop at end of the string
+ # Move 2 steps at a time
+ 
+ 
+
+Tasks:
+
+print hello world
+
+sum of 2 integers 
+
+sum of 2 intergers with input parameters
+
+print boolean values
+
+write a script,take one string and use some functions
+
+print strings with single line and multi line
+
+write a script to splite the data
+
+writa a script to extract perticular posion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

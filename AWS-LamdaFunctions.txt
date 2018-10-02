@@ -50,7 +50,7 @@ ec2 stopped --event-- Lamda ---- SNS -email-->Subscriber
 	  service 1 -cloudwatch logs actions
 	  service 2 - SNS - or publish
 	 
-    policy name : lamda_example_onwe
+    policy name : lamda_example_one
       b) create role: 
        choose the service that will use this role while creating role.
 2) create SNS topic
@@ -101,8 +101,6 @@ def lamda_handler(event,context):
 	Message = sns_msg,
 	Subject = sns_subject
 )
-	
-	
 
 
 search:

@@ -1,0 +1,70 @@
+Task:
+
+Create a lamda function to stop the instances
+
+Steps:
+
+1) create a policy, add SNS,cloud watch logs permissions
+     policy name: ec2_stop_sns_notification
+2) create a role attach the policy
+   Choose the service that will use this role
+   lamda
+   role name: ec2stop_lamda_role
+3) create sns topic to send notification
+    create a topic
+    create a subscription with protocal email
+4) create lamda function
+     Name
+	   alert_when_ec2_stops
+     Runtime 
+	   python 3.6
+     Role
+	   choose existing role
+     Existing Role
+	   ec2stop_lamda_role
+	 Designer
+	    add trigger
+		 cloudwatch Events
+		  - configure triggers
+		     Rule
+			   create a new role
+			 Rule name
+			   ec2_instance_down
+			 Rule Type
+			   Event pattern
+                   EC2
+				   Ec2 instance state-change notification
+				   Details
+				    .state  .Instances
+					stopped
+					
+					Instanes
+					  add instance id - i-0c7a34787b03e536a
+					  
+Lamda Function:
+ import json
+import boto3
+sns_client=boto3.client('sns')
+
+def lambda_handler(event, context):
+    #sns_arn = 'arn:aws:sns:us-west-2:071705998066:ec2_alerts'
+    #sns_msg = 'Ec2 instance stopped !!!!'
+    #sns_subject = 'Ec2 stopped alert'
+    sns_client.publish(
+    TopicArn = 'arn:aws:sns:us-west-2:071705998066:ec2_alerts',
+    Message = 'Ec2 instance stopped !!!!',
+    Subject = 'Ec2 stopped alert'
+    )		
+Test:
+
+run test option and we can see the logs in cloud watch logs.	
+					
+			
+			   
+			   
+     	 
+	
+	
+   
+   
+	
