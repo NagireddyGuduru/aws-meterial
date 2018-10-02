@@ -82,7 +82,11 @@ ec2 stopped --event-- Lamda ---- SNS -email-->Subscriber
 				select state
 				select instances
 				   provide instance id
-			 code:
+				   Enable triggers
+				   save
+Test:
+stop instance and should see the email notification				   
+code:
 
 import json
 import boto3
@@ -94,7 +98,7 @@ def lamda_handler(event,context):
  sns_client.publish()
 	sns.client.publish(
 	TopicArn = sns_arn,
-	Message = sns_msg
+	Message = sns_msg,
 	Subject = sns_subject
 )
 	
