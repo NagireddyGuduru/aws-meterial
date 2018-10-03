@@ -197,12 +197,123 @@ Function:
  
  x = data[::] # step 
  x= data[::2] # move to 2 steps
+ x= data[:3:]
  # start at 0
  # Stop at end of the string
  # Move 2 steps at a time
  
- 
+ List:
+ ----
+ - it holds multiple values
+ Eg:
+   locations = ["Banglore","Noida","Mumbai","Pune","Banglore"]
+   '''
+     1. Allows duplicates
+	 2. It maintains insertion order
+	 3. You can Insert,update,delete values in List.(Mutable i.e modifiable)
+	 4. 
+   '''
+# For loops 
+for location in locations:    // : tells begining of the block
+  print(x)   
+for location in locations[::2]: // alternative values print
+for location in locations[::-1]: // reverse print
+for location in locations[::]:
 
+# Accessing values at specific index
+ print(location[3])
+#Delete data 
+ del location[3] // delete at specific index
+#Appent adds to the end of the list
+ locations.append('Hyderabad')
+#Using Insert you could insert at any specifice index
+ locations.insert(1,"Chennai") 
+# Replaces old value at index 0 with new Values Delhi
+ location[0] = 'Delhi'
+
+print('Outside for loop')  // in python readability no that much good
+
+Set:
+----
+   locations = {"Banglore","Noida","Mumbai","Pune","Banglore"}
+   '''
+     #### Set Data Type #####
+     1. Set doesnot allows duplications
+	 2. It does not maintains insertion order
+	 3. It doesnot allow index based operations
+	 
+   '''
+ print(locations)
+ print(locations[0]) // not allow indexing
+ locations.add('Chennai')
+
+ for y in locations:
+   print(y)
+
+tuples:
+-------   
+   locations = ("A","B","C")
+   '''
+     #### Tuple Data Type #####
+     1. Tuple allows duplicates
+	 2. It maintains insertion order
+	 3. Tuple is immutalbe (you can't update tuple)
+	 4. It allow index based operation
+   '''
+ 
+ print(locations[0])
+ for y in locations:
+    print(y)
+
+Dictionary:
+----------
+   - Dictionary  stores data as key value pair
+country_codes= {"India:IN","Russia":"RS","South Africa":"RSA"}   
+country_codes= {
+    "India:IN",
+	"Russia":"RS",
+	"South Africa":"RSA"
+	}   
+# We get values from dictionary by passing keys
+# Keys in dictionary must be unique 
+# If you add duplicate key old key/values replaced with new key/values
+
+# Get all keys
+for key in country_codes.keys():
+ print(key)
+# Get all values
+ for value in country_codes.values():
+ print(value)
+
+#Get key and its values
+ for key in country_codes.keys():
+    val = country_codes.get(key)
+    print("key is {} and value is {}".format(key,val))
+
+employee = {
+ "Name": "RamKrishna"
+ "Salary": 2000,
+ "Skills":[
+   'java','aws','python'
+ ],
+ "company": {
+    "name": "IBM",
+	"location":"Pune",
+	"department":"HR"
+ }
+}
+
+name = employe['Name']	
+skills = employee['skills']
+company = employee['company']
+company_name = employee['company']['name']
+
+for skill in employee['skills']:
+ print(skill)
+
+print('Name is {} '.format(employee['Name']))
+
+ 
 Tasks:
 
 print hello world
