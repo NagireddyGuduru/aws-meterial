@@ -336,13 +336,19 @@ r1=add(30,40)
 --------------------------------------
 Exception Handling:
 -------------------
-- 
-
-	  
-	  
-	  
-
-
+- try:
+   x= input('Enter value of x= ')
+   y= input('Enter value of y= ')
+   result =int(x)+int(y)
+   print('Sum of {} and {} is {}'.format(x,y,result))
+  except ValueError as e:
+   print('Please enter only numbers',e)
+  except KeyError:
+   print('Please enter valid key') 
+  finally:
+    # finally block for closing the db connection,closing files
+   print('Executes always')
+   
  
 Tasks:
 
