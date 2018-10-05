@@ -368,7 +368,100 @@ write a script to splite the data
 
 writa a script to extract perticular posion.
 
+find max element in list
 
+search for element in list
+
+x = [10,1,2,8,9,3]
+search_for = 2
+for i in x:
+ if i == search_for:
+    print('Value {}',found in the list'.formate(search_for))
+ else
+    print('Value {}',not found in the list'.formate(search_for))
+
+Here This code may not be efficient. can do more imporvements	
+---------------------------	
+for i in x:
+ if i == search_for:
+    found = True
+	break // once found break loop
+ 
+if found: // it is boolean not need compare if it is number have to compare if found == 2
+   print('Value {}',found in the list'.formate(search_for))
+else:
+  print('Value {}',not found in the list'.formate(search_for))
+-----------------------------
+if search  200
+  print('Value {}',found in the list'.formate(search_for))
+else:
+  print('Value {}',not found in the list'.formate(search_for))
+-------------------------------\
+
+courses = ["AWS","Java","Docker"]
+if "Kubernets" in courses:
+   print('Register for the course')
+else:
+   print('Do not register for the course')
+-----------------------------------
+
+courses = ["AWS","Java","Docker"]
+if "Kubernets" not in courses:
+   print('Register for the course')
+else:
+   print('Do not register for the course')
+   
+----------------------------------
+
+x=0 // false
+x=-12 or x= 2 // true
+x="" // false
+x="  " // true
+any blank false
+x={},x=[],x=""
+
+
+in if condition along with boolean we can use diff data types while using numbers 0 is false anything else is true.
+------------------------------------------
+
+Nested If block
+ marks = 90
+ if marks >=60:
+    print('First class')
+ elif marks >=50:
+    print('second class')
+ elif marks >=35:
+    print('Pass') 
+ else:
+    print("Failed") 
+	
+------------------------------------------
+While loop:
+-----------
+count = 1
+
+while count <= 10:
+   print(count)	
+   count = count + 1 // count++ not support in python
+else:
+   print('End') // we can use else block for while in python
+
+-----------------------------------------------------
+
+Continue:   
+--------
+ values = [1,2,3,4,6,0,3,0,1]   
+ result = 1
+ 
+ for x in values:
+    if x == 0: 
+	  continue # when zero, stop current iteration and continue with next interation
+	result = result * x //this statement will not execute if it is continue. it goto next iteration i.e next iteration is 3.
+
+print('Result is ',result)
+
+
+  
 
 
 
