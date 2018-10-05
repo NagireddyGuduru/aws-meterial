@@ -312,6 +312,36 @@ for skill in employee['skills']:
  print(skill)
 
 print('Name is {} '.format(employee['Name']))
+---------------
+----------------------------------
+Functions:
+---------
+  # Defining Function in Python
+  def add(x,y):
+      result = x+y
+	  print('Sum of {} and {} is {}'.format(x,y,result))
+# Invoking a function
+add(10,20)
+add(30,40)
+To Return:
+----------
+# Defining Function in Python
+  def add(x,y)://here x y parameters
+      result = x+y
+	  print('Sum of {} and {} is {}'.format(x,y,result))
+	  return result,result // In python can return mutiple returns
+# Invoking a function
+r=add(10,20) //here 10,20 are arguments
+r1=add(30,40)
+--------------------------------------
+Exception Handling:
+-------------------
+- 
+
+	  
+	  
+	  
+
 
  
 Tasks:
