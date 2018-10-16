@@ -1,0 +1,58 @@
+We can put unlimited data in DynamoDB
+And we can scal
+DynamoDb charge based on Storage
+
+RDS:
+
+ReleationalDatabase service
+
+-- Paas- we do not install any instances,db,servers
+
+-- RDS is fully managed db service,which falls under PaaS.
+-- RDS supports following engines
+    - Amazon Arora
+	- Oracle
+	- Microsoft SQL
+	- PostgreSQL
+	- MySql
+	- MariaDb
+	
+-- RDS supports Multi AZ Deployments,AWS manages primary and standby in diff AZ,If primary fails it auto failovers to standby.
+Note: Multi Az is not to improve the performance,it is meant for High availability.
+
+Read Replicas:
+   - 
+   - 12 replicas you can create
+   -- Read Replica supprt only select querys, doesnot support insert,update
+   -- Read Replicat have diff endpoints
+   -- we can use read replica for disater recovery by keep it diff region. In case of Desaster route application traffic to replica.
+      by promoting replica as master db.
+	  
+	  
+	  Oracle:
+	  
+	  steps:
+	  - Oracle E E
+	  when you practice show free tire
+	  select checkbox
+	  
+	  -- use case:
+	      Dev/Test
+      -- Db details:
+	    Db instance class:
+		db.t2.micro - 1 vcpu,1GB RAM
+	  -- default - pick random subnet group
+	  
+	  Dbs should be public accessibility - NO
+	  
+	  Database options:
+	  Take backup non business hrs
+	  
+	  Log Exports:
+	   
+	   
+	   After launching RDS we can modify lot of  attributes.
+	   like storage type, instance type
+		
+		
+		

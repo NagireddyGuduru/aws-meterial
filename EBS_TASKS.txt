@@ -1,0 +1,92 @@
+Task: Take EBS volume backup and restore
+
+
+- Take 2 servers and name it as webserver-1 and webserver-2
+- create EBS volume and attach to webserver-1
+    webserver-1 in AZ us-west-2a then your EBS volume also should be same AZ.
+- ssh webserver-1
+   lsblk
+   df -h
+   file -s /dev/xvdf // to check volume, file system created or not
+   mkfs -t ext4 /dev/xvdf // to create file system
+   mkdir mywebapp //create a folder to mount
+   mount /dev/xvdf/ mywebapp
+- create some files in mywebapp folder 
+  cd mywebapp
+  touch 1.txt 2.txt 3.txt
+- take a backup of EBS volume i.e create snapshot.
+- Restore backup
+  - create a volume from snapshot
+  - attach to webserver-2
+  - verify EBS volumes
+     fdisk -l
+     file -s /dev/xvdf // check file system of volume. it already created the filesystem.
+  - mount /dev/xvdf /mywebdata
+  - It will listout file what you created in webserver-1 mounted folder
+
+
+Task: Create RDS with mysql database and take a backup and restore.
+
+Steps:
+  - Create RDS instance with mysql database
+      - select engine option
+           mysql
+      - choose usecase - Dev/Test - MySQL
+      - Specify DB details
+           - DB instance class - db.t2.micro- 1vCPU,1GB RAM
+         Settings
+       		- DB instance identifier- mywebdbinstance
+		- Master username - root & Master password - ********
+
+  - Configure advanced settings
+     - Network & Security
+        - Availability zone - us-west-2a
+     - Database options 
+        - Database name - mywebdb
+     - Backup
+        - Backup retention period - 7 days
+        - Backup window - No preference
+     - Monitoring
+        - Disable enhanced monitoring
+     - Maintenance
+        - Disable auto minor version upgrade
+     - Create Database
+        - connect - take endpoint - mywebdbinstance.clyytbc1krdt.us-west-2.rds.amazonaws.com
+      
+  - connect database from ec2 instance
+       mysql -h mywebdbinstance.clyytbc1krdt.us-west-2.rds.amazonaws.com -u root -p
+       mysql -h mywebdbinstance.clyytbc1krdt.us-west-2.rds.amazonaws.com -u root -ppassword mywebdb > dumpfile.sql
+  
+  - run sample sql script to create database and tables.
+   create tables
+     CREATE TABLE CUSTOMERS(
+	   ID   INT              NOT NULL,
+	   NAME VARCHAR (20)     NOT NULL,
+	   AGE  INT              NOT NULL,
+	   ADDRESS  CHAR (25) ,
+	   SALARY   DECIMAL (18, 2),       
+	   PRIMARY KEY (ID)
+	);
+	CREATE TABLE Persons (
+		PersonID int,
+		LastName varchar(255),
+		FirstName varchar(255),
+		Address varchar(255),
+		City varchar(255) 
+	);
+  - take a snapshot
+  - after taking snapshot delete tables from database
+     drop table customers;
+  - restore snapshot
+  - you can see deleted tables after restore.
+  
+  
+  
+ 
+
+
+   
+
+
+
+

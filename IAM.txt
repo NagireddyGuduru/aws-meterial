@@ -1,0 +1,88 @@
+IAM:
+
+We should not use root users for day to day activity we have to create admin user and use it
+instead of root user
+
+
+IAM:
+
+Create admin user account and use it.
+
+eg:
+	username:dbadmin
+	access type:  
+	
+	 Programmatic accesss - programmes can do operation on aws resouces
+		eg: python application upload to s3 and you want cli
+		cli - helps to integrate with tools like jenkins
+	 
+	 aws mgmt console access
+
+Note:(allways better to give both)
+
+	console password: auto generated pwd
+
+	set permisssion - Attach existing polices directly 
+
+
+Task:create user and attach adminaccess existing polices.
+
+Task:  Customize login url for user
+
+Task : create a group with ecefullaccess and add users in that group
+
+steps: create New group-group name- ec2full access and add users in that group
+
+Task: reset the password
+- users-security credentials - manage password - require password reset select
+
+Task: enabling MFA
+
+ - root user - activate MFA for root user
+ - devices - virtual device and h/w device(rsa token generate device)
+ select - virtual device
+ manage MFA device - scan device
+
+ enable MFS for root user
+ enable MFA for IAM users
+
+Note: you cannot operate two user in same browser
+
+Policies:
+
+- It json formate containing set of permissions. we can attach a police to the user,group and role.
+
+-create policy:
+	policy have version and statement
+	In statement have action,resources
+		action - launch instance, stop instance, create IAS user
+		Resources - all resources ie. ec2, RDS,
+					any ec2 instance
+					any RDS instance
+
+	ec2 - is service
+	ec2 instance is resource
+
+
+Task : create custom policy
+
+- eg: i want policy which allows iam user to start, stop and list ec2 instances.
+
+step 1:
+
+create a policy
+
+visual editor:
+
+service - ec2
+actions - if you want all select all ec2 instance or search in search box - with start, describeinstances(list the ec2instance),stopinstances
+
+Resources: all resources - anyone can instance and start and stop.
+
+Review Policy:
+
+Assign to some user
+Test:
+Select user- filter polices- select the policy-add permission
+
+

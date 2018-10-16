@@ -1,0 +1,20 @@
+RDS notifications
+when low storage need notification
+
+Install MySql workbench
+
+Target
+Topic - communication chanel
+
+
+RDS task:
+
+Take backup
+Restore database
+set Read Replica
+Send Notification when low storage
+
+
+
+am i audioble now?
+
