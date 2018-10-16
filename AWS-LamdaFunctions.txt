@@ -82,7 +82,11 @@ ec2 stopped --event-- Lamda ---- SNS -email-->Subscriber
 				select state
 				select instances
 				   provide instance id
-			 code:
+				   Enable triggers
+				   save
+Test:
+stop instance and should see the email notification				   
+code:
 
 import json
 import boto3
@@ -94,14 +98,251 @@ def lamda_handler(event,context):
  sns_client.publish()
 	sns.client.publish(
 	TopicArn = sns_arn,
-	Message = sns_msg
+	Message = sns_msg,
 	Subject = sns_subject
 )
 
 
+ #Launching Ec2 using boto3
+  import boto3
+  client=boto3.client('ec2',region='ap-south-1')
+  client.run_instances(
+     ImageId= '',
+	 InstanceType = 't2.micro',
+	(mandatroy) MaxCount=1,
+	 (mandatory)MinCount=1
+  )
+ eg: Maxcount 20, subnet capacity 10 then it will create 10 instances
+     Mincount 15, subnet capacity 10 in this case, will not create the instance bcoz minimum capacity not there.
+-----------------------------------------------------------------------------------------------------	 
+Apply filters
+---------------
+Task:  I want all stopped instances
+-----------------------------------
+import boto3
+client = boto3.client('ec2')
+resp = client.describe_instances()
+
+ec2_filter = [
+{
+   'Name': 'instance-state-name',
+   'Values': [
+       'stopped'
+   ]
+}
+
+]
+resp = client.describe_instances(filter=ec2_filter)
+
+for reservation in resp['Reservations']:
+ for instance in reservation['Instances']:
+    instance_id = instance['InstanceId']
+	state = instance['state']['Name']
+	print('Instance Id = {} and Instance state is {}'.formate(instance_id,state))
+
+I want to apply filter,fetch instances in STOP state:	
+
+Task: want instances with t2.micro 
+-----------------------------------------
+ec2_filter = [
+{
+   'Name': 'instance-type',
+   'Values': [
+       't2-micro'
+   ]
+}
+
+]
+resp = client.describe_instances(filter=ec2_filter)
+
+for reservation in resp['Reservations']:
+ for instance in reservation['Instances']:
+    instance_id = instance['InstanceId']
+	state = instance['state']['Name']
+	type = instance['InstanceType']
+	print('Instance Id = {} and Instance state is {}'.formate(instance_id,state))
+---------------------------------------------------------	
+Multiple filters:
+ec2_filter = [
+{
+   'Name': 'instance-type',
+   'Values': [
+       't2-micro'
+   ]
+}
+{
+   'Name': 'instance-type',
+   'Values': [
+       't2-micro'
+   ]
+}
+]
+
+----------------------------------------------------------	
+	Filter based on Tags:	
+---------------------------
+Task: Find dev servers and send mail
+------------------------------------
+[]-inside array have dictionaries {}
+[ - this is array
+{
+#this is dictionary
+}
+]
+
+import boto3
+ec2=boto3.client('ec2')
+sns = boto3.client('sns')
+
+#find all dev servers
+dev filter = [
+{
+  'Name': 'tag:Environment',
+  'Values': ['Dev']
+}
+]
+msg_list = []
+#fetch InstanceId,LaunchTime,AZ
+resp = ec2.describe_instances(Filters=dev_filter)
+ for reservation in resp['Reservations']:
+   id = instance['InstanceId']
+   time= instance['LanunchTime']
+   zone= instance['Placement']['AvailabilityZone']
+   msg = 'Id = {}, Time = {}, AZ = {}'.format(id,time,zone)// instead of in loop put into list
+   msg_list.append(msg)
+   
+# Send Email
+sns.publish(
+   TopicArn = '',
+   Message = str(msg_list) // msg_list is list, but Message expect staring so typecase it.
+   Subject = 'Java Home Boto3 Demo'
+)
+
+
+-------------------------------
+Task: want instance with specific ami
+
+Task: list all ebs volumes	
+----------------------------
+import boto3
+
+ec2= boto3.client('ec2')
+
+#volume not in use dont want to create snapshot - check in aws console state are inuse and available
+vol_filter = [
+{
+  'Name':'status'
+  'Values':['in-use']
+}
+
+]
+
+resp= ec2.describe_volumes(Filters=vol_filter);
+
+for volume in resp['volumes']:
+  vol_id = volume['VolumeId']
+  print('Volume ID ', volume ['VolumeId'])
+# Take sanpshot
+  ec2.create_snapshots(
+    Description = 'Created by boto3',
+	VolumeId= vol_id
+  )  
+-------------------------------------------------------
+boto3 waiter
+------------
+Task: I want to start the machine and wait to start m/c.
+
+ import boto3
+ ec2 = boto3.clinet('ec2')
+ ec2.start_instances(InstanceIds = ['i-xxxxxxxxx'])
+ 
+ # Wait for ec2 to be running state
+ waiter =ec2.get_waiter('instance_running')
+ waiter.wait(InstanceIds = ['i-xxxxxxxxx'])
+ print('Instance is running')
+--------------------------------------------------------------- 
+boto3 resources:
+---------------
+- resources is high level object and client is low level object
+- resources are handy.
+-----------------------------------------------------------------
+Task: Describe ec2 instance in running state using resource object
+------------------------------------------------------------------
+
+import boto3
+
+resource = boto3.resource('ec2')
+# Boto3 collections
+# List (Instance)
+instances = resource.instances.all()
+for instance in instances:
+  print(instance.instance_id)
+  print(instance.state['Name'])
+  
+------------------------------------------------------------------------------------
+Lamda Function:
+
+Task: Run lamda function in every one minute.
+---------------------------------------------
+ Findout stopped instances and start the that
+ 
+ steps:
+    Author from scratch
+ Name:
+   start_ec2_instance
+ Role:
+   lamda_admin_role
+   
+  Goto Editior:
+    import boto3
+	resource=boto3.resource('ec2')
+	#here changed the handler name in this case Handler name in header
+	def start_ec2(event, context):
+	  stopped_filter = [
+	  {
+	    'Name':'instance-state-name'
+		'Values':['stopped']
+	  }
+	  ]
+	  resp = resource.instances.filter(Filters=stopped_filter).start()
+      print(resp)
+	  
+  scheduling lamda function: 
+	 Designer - cloudWatchEvents 
+	  Create a new rule
+	  Rule name:
+	  
+	  Schedule expression
+	     rate(1 min)
+	  
+      
+----------------------------------------------------------------------  	
+Extract the logs
+------------------
+ - whenever object uploaded in s3 we wanna a email with object details and bucket details
+ 
+ s3
+ - add notification
+   Object_uploaded
+ - ObjectCreate
+ - go with all defaults
+ - uploade a file
+
+
+
+
+
+  
+  
+
+  
+
+
+
+	 
 search:
 boto3 sns					 
-   	
+boto3 ec2   	
     	
     
 

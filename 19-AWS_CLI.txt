@@ -34,3 +34,16 @@ NOTE: aws cli profiles if wanna manage multiple accounts from cli you need multi
     [default]
     [ibm]   
 
+---------------------------
+AWS CLI Jenkins Integration:
+----------------------------
+Aws Jenkins User:
+
+step 1:
+ create a user account for the Jenkins server
+ Access key Id:AKIAJPMLTXNAUNNELSKQ
+ Secret access key: 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
+
+step 2:
+aws --region us-east-1 ssm start-automation-execution --document-name UpdateMyLatestWindowsAmi --parameters      "sourceAMIid='{{ssm:latestAmi}}'"
+aws --region us-east-2 ssm start-automation-execution --document-name UpdateMyLatestWindowsAmi --parameters "sourceAMIid='{{ssm:latestAmi}}'"

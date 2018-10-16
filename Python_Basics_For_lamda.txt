@@ -312,7 +312,43 @@ for skill in employee['skills']:
  print(skill)
 
 print('Name is {} '.format(employee['Name']))
-
+---------------
+----------------------------------
+Functions:
+---------
+  # Defining Function in Python
+  def add(x,y):
+      result = x+y
+	  print('Sum of {} and {} is {}'.format(x,y,result))
+# Invoking a function
+add(10,20)
+add(30,40)
+To Return:
+----------
+# Defining Function in Python
+  def add(x,y)://here x y parameters
+      result = x+y
+	  print('Sum of {} and {} is {}'.format(x,y,result))
+	  return result,result // In python can return mutiple returns
+# Invoking a function
+r=add(10,20) //here 10,20 are arguments
+r1=add(30,40)
+--------------------------------------
+Exception Handling:
+-------------------
+- try:
+   x= input('Enter value of x= ')
+   y= input('Enter value of y= ')
+   result =int(x)+int(y)
+   print('Sum of {} and {} is {}'.format(x,y,result))
+  except ValueError as e:
+   print('Please enter only numbers',e)
+  except KeyError:
+   print('Please enter valid key') 
+  finally:
+    # finally block for closing the db connection,closing files
+   print('Executes always')
+   
  
 Tasks:
 
@@ -423,7 +459,50 @@ Continue:
 	result = result * x //this statement will not execute if it is continue. it goto next iteration i.e next iteration is 3.
 
 print('Result is ',result)
+--------------------------------------------------------
+BOTO 3:
+------
+- boto 3 is python sdk of amazon
+- We need to install explictly this
+- For installing any modules we use pip
+- latest python version come with pip no need to install explictly.
 
+Installing Boto 3:
+------------------
+pip install boto3
+
+In AWS:
+- create IAM user with admin permissions and select programmatic access.
+- Using cli configure access key and secrete key
+- .aws/config key location
+
+verify:
+  pip --version
+-----------------------------------------------------------------------------------------------------------------------
+  #Launching Ec2 using boto3
+  import boto3
+  client=boto3.client('ec2',region='ap-south-1')
+  client.run_instances(
+     ImageId= '',
+	 InstanceType = 't2.micro',
+	(mandatroy) MaxCount=1,
+	 (mandatory)MinCount=1
+  )
+ eg: Maxcount 20, subnet capacity 10 then it will create 10 instances
+     Mincount 15, subnet capacity 10 in this case, will not create the instance bcoz minimum capacity not there.
+-------------------------------------------------------------------------------------------------------------------
+ #List all ec2 instances
+ import boto3
+ client=boto3.client('ec2',region='ap-south-1')
+ resp = client.describe_instances()
+ print(resp)
+ 
+ -------------------------------------------------------------------------------------------------------------------
+ Tasks:
+
+1) Launching Ec2 using boto3
+2) List all ec2 instances
+  
 
   
 
