@@ -1,0 +1,107 @@
+EBS volume:
+
+one volume can be attached to only one instance at a time.
+instance can have multiple volumes
+you can resize volume, you can increase the size but cann't decrease.
+snapshots are stored in s3
+
+snapshot are incremental.i.e new snapshot contains the which is added previous snapshot.
+each volume max provide 10000 IOPS
+
+Provisios IOPS not a free for free trial. you have for volumes + IOPS
+
+Root volume is where os installed.
+Volumen Type:  General Purpose SDD
+               Provision Purpose SDD - databases - 
+			   Throughput Optimised HDD
+			    - Designed for throughpout intensive workloads
+				- Use it when you have frequently accessed data
+				- Storage cost is more when compared with cold HDD
+				
+			   Cold HDD - storing for longtime
+			   thoughput - 100mb per sec, when access the data then will charge. you access frequently charges are more.
+			   magentic - for legacy application which give best performance then go with magentic.
+			   
+			   
+Qu:
+
+As of today we can get max 80,000 IOPS per instance while using SSD but application may need more than 80,000 how to you achieve that
+Ans: By configuring RAID
+
+Choose: SSD type if domenent perfomace is IOPS
+IO block size is small.
+			   
+			   
+			   
+IOPS: read data,write data.			   
+
+Task:
+
+
+Create a volume and attache to Ec2 instance
+
+Steps:
+size - 15GB- 30GB is the limit.
+
+
+Detach a volume from instance and attach it to other instance.
+
+resize volume
+
+Take a backup of volume
+
+Create a instance with Instance storeage.
+
+steps: goto community AMI - select centos
+
+
+
+Restore volume - 
+
+- goto action - create volume
+
+
+Encrpt the volume
+  select the option with Encrypt the volume
+  
+  
+attache multiple volumes to instance.
+
+
+
+Instance Store:
+
+- Is an temporary storage.data stored on it lost when you stop instance.
+- They are upto 90% cheaper than EBS.
+
+
+
+EC2 Purchase Options:
+  1. On demand Instances
+     a. No long term commitment
+  2. Reserved Instances
+  
+  3. Spot Instances
+     - based on biding - 90% cost savings- 
+  
+  4. Dedicated hosts
+     -Dedicated Physical servers they will give not VM.
+  
+  How to purchase instances:
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
